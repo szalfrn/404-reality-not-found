@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404: REALITY NOT FOUND — Cyber Tech Matrix Vault v14.0</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Fira+Code:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['"Fira Code"', 'monospace'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        orbitron: ['"Orbitron"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #020617;
+            color: #cbd5e1;
+        }
+        /* Canvas Background Teknologi / Data Matrix Bergerak */
+        #techCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .tech-card {
+            background: rgba(3, 7, 18, 0.82);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .tech-card:hover {
+            border-color: rgba(56, 189, 248, 0.9);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 15px 45px -10px rgba(56, 189, 248, 0.45), inset 0 0 20px rgba(56, 189, 248, 0.15);
+        }
+        .tab-btn {
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .tab-btn.active {
+            border-bottom-color: #38bdf8;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.15);
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+        }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #0369a1; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+    </style>
+</head>
+<body class="font-sans min-h-screen flex flex-col justify-between relative overflow-x-hidden selection:bg-sky-500 selection:text-white">
+
+    <!-- Canvas Background Teknologi Data Matrix -->
+    <canvas id="techCanvas"></canvas>
+
+    <!-- Header Navigation -->
+    <nav class="border-b border-sky-500/20 bg-black/85 backdrop-blur-2xl sticky top-0 z-40 px-6 py-3">
+        <div class="container mx-auto flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <div class="w-3 h-3 rounded-full bg-sky-400 animate-ping"></div>
+                    <div class="w-3 h-3 rounded-full bg-sky-400 absolute inset-0"></div>
+                </div>
+                <span class="font-orbitron font-black text-sky-100 text-sm tracking-widest">CYBER_MATRIX_VAULT <span class="text-[10px] font-mono text-cyan-400 font-normal">v14.0</span></span>
+            </div>
+            
+            <div class="flex items-center gap-3 text-xs font-mono">
+                <button onclick="toggleTerminal()" class="px-3.5 py-1.5 rounded-lg bg-sky-950/50 hover:bg-sky-900/70 border border-sky-500/30 text-cyan-300 transition-all flex items-center gap-1.5 shadow-lg">
+                    <span>>_</span> TERMINAL_CONSOLE
+                </button>
+                <button onclick="openSystemStatus()" class="px-3.5 py-1.5 rounded-lg bg-sky-950/50 hover:bg-sky-900/70 border border-sky-500/30 text-sky-300 transition-all flex items-center gap-1.5 shadow-lg">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> SYS_TELEMETRY
+                </button>
+                <button onclick="exportData()" class="px-3.5 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-bold border border-sky-400 shadow-lg shadow-sky-950/80 transition-all">
+                    EXPORT_DATABASE
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="container mx-auto px-6 pt-12 pb-6 text-center relative z-10">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-950/60 border border-sky-500/30 text-cyan-400 font-mono text-[11px] mb-4 backdrop-blur-md shadow-inner">
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+            RESTRICTED TECH MATRIX REPOSITORY — 100 NON-REPEATING CHRONICLES
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl font-black tracking-wider text-white mb-3 font-orbitron drop-shadow-[0_0_35px_rgba(56,189,248,0.5)]">
+            404: <span class="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">REALITY NOT FOUND</span>
+        </h1>
+        
+        <p class="max-w-xl mx-auto text-gray-300 text-xs md:text-sm leading-relaxed font-light drop-shadow">
+            An encrypted technological repository indexing 100 distinct anomalies, neural matrix logs, and biometric anomalies tied to real-world locations.
+        </p>
+
+        <!-- Search Bar -->
+        <div class="max-w-xl mx-auto mt-6 relative">
+            <input type="text" id="searchInput" placeholder="Search across 100 unique records by site, phenomenon, or keyword..." 
+                class="w-full bg-black/90 border border-sky-500/40 rounded-xl px-4 py-3 pl-11 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all font-mono backdrop-blur-md shadow-2xl">
+            <svg class="w-4 h-4 absolute left-4 top-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-2 mt-5" id="filterContainer">
+            <button onclick="filterCategory('all', this)" class="filter-btn active px-4 py-1.5 rounded-lg text-xs font-mono bg-sky-600 text-white border border-sky-400 shadow-lg shadow-sky-950/50 transition-all">
+                ✨ ALL_RECORDS
+            </button>
+            <button onclick="filterCategory('locations', this)" class="filter-btn px-4 py-1.5 rounded-lg text-xs font-mono bg-black/80 hover:bg-sky-950/60 text-gray-400 border border-sky-500/20 transition-all">
+                🌌 LOCATIONS
+            </button>
+            <button onclick="filterCategory('artifacts', this)" class="filter-btn px-4 py-1.5 rounded-lg text-xs font-mono bg-black/80 hover:bg-sky-950/60 text-gray-400 border border-sky-500/20 transition-all">
+                🕰 ARTIFACTS
+            </button>
+            <button onclick="filterCategory('entities', this)" class="filter-btn px-4 py-1.5 rounded-lg text-xs font-mono bg-black/80 hover:bg-sky-950/60 text-gray-400 border border-sky-500/20 transition-all">
+                👤 ENTITIES
+            </button>
+            <button onclick="filterCategory('phenomena', this)" class="filter-btn px-4 py-1.5 rounded-lg text-xs font-mono bg-black/80 hover:bg-sky-950/60 text-gray-400 border border-sky-500/20 transition-all">
+                ✨ PHENOMENA
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Grid -->
+    <main class="container mx-auto px-6 py-4 flex-grow relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="archiveGrid"></div>
+
+        <!-- Pagination -->
+        <div class="mt-10 flex justify-center items-center gap-3 font-mono text-xs">
+            <button id="prevBtn" onclick="changePage(-1)" class="px-4 py-1.5 rounded-lg bg-black/90 border border-sky-500/30 hover:bg-sky-600 hover:border-sky-400 transition-all disabled:opacity-30 disabled:pointer-events-none">
+                ← PREV_PAGE
+            </button>
+            <span id="pageIndicator" class="text-gray-400 bg-black/95 px-4 py-1.5 rounded-lg border border-sky-500/20">PAGE 1 / 12</span>
+            <button id="nextBtn" onclick="changePage(1)" class="px-4 py-1.5 rounded-lg bg-black/90 border border-sky-500/30 hover:bg-sky-600 hover:border-sky-400 transition-all disabled:opacity-30 disabled:pointer-events-none">
+                NEXT_PAGE →
+            </button>
+        </div>
+    </main>
+
+    <!-- Multi-Tab Archive Modal -->
+    <div id="detailModal" class="fixed inset-0 bg-black/95 backdrop-blur-2xl z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="tech-card max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-2xl p-6 md:p-8 relative border border-sky-500/50 text-left shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div id="modalHeader"></div>
+
+            <!-- Tab Navigation Menu -->
+            <div class="flex border-b border-sky-500/20 my-4 font-mono text-xs gap-1">
+                <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn active px-4 py-2 rounded-t-lg font-semibold">
+                    📋 OVERVIEW_LOG
+                </button>
+                <button onclick="switchTab('location')" id="tab-location" class="tab-btn px-4 py-2 rounded-t-lg font-semibold text-gray-400">
+                    📍 GEOLOCATION_DATA
+                </button>
+                <button onclick="switchTab('narrative')" id="tab-narrative" class="tab-btn px-4 py-2 rounded-t-lg font-semibold text-gray-400">
+                    📖 CLASSIFIED_NARRATIVE
+                </button>
+            </div>
+
+            <!-- Tab Content Sections -->
+            <div id="tabContent-overview" class="tab-page"></div>
+            <div id="tabContent-location" class="tab-page hidden"></div>
+            <div id="tabContent-narrative" class="tab-page hidden"></div>
+        </div>
+    </div>
+
+    <!-- Terminal Drawer Window -->
+    <div id="terminalDrawer" class="fixed bottom-0 left-0 right-0 bg-black/95 border-t border-sky-500/50 p-5 z-50 transform translate-y-full transition-transform duration-300 font-mono text-xs hidden shadow-2xl">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center mb-2 text-cyan-400 border-b border-sky-500/20 pb-2">
+                <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                    SECURE_TERMINAL_INTERFACE
+                </span>
+                <button onclick="toggleTerminal()" class="text-gray-500 hover:text-white">[CLOSE_CONSOLE]</button>
+            </div>
+            <div id="terminalOutput" class="h-28 overflow-y-auto bg-black/80 p-3 rounded-lg border border-sky-500/20 text-emerald-400 space-y-1 mb-2 font-mono">
+                <p>> System online. 100 cyber matrix records loaded.</p>
+                <p>> Type 'help' for available command parameters.</p>
+            </div>
+            <input type="text" id="terminalInput" onkeydown="handleTerminalCommand(event)" placeholder="Enter command (e.g., 'scan', 'count', 'clear', 'random')..." class="w-full bg-black border border-sky-500/40 rounded-lg p-2 text-white focus:outline-none focus:border-cyan-400">
+        </div>
+    </div>
+
+    <!-- Telemetry Status Modal -->
+    <div id="statusModal" class="fixed inset-0 bg-black/90 backdrop-blur-xl z-50 flex items-center justify-center p-4 hidden">
+        <div class="tech-card max-w-sm w-full rounded-2xl p-5 border border-sky-500/40 text-left font-mono text-xs">
+            <h3 class="text-sm font-bold text-cyan-300 mb-3 flex items-center gap-2 font-orbitron">
+                <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                SYSTEM_DIAGNOSTICS
+            </h3>
+            <div class="space-y-2.5 text-gray-300">
+                <div class="flex justify-between border-b border-sky-500/20 pb-1.5">
+                    <span>CANVAS ENGINE</span>
+                    <span class="text-cyan-400">CYBER_MATRIX_60FPS</span>
+                </div>
+                <div class="flex justify-between border-b border-sky-500/20 pb-1.5">
+                    <span>DATABASE STATUS</span>
+                    <span class="text-gray-200">100 TECH CHRONICLES</span>
+                </div>
+                <div class="flex justify-between border-b border-sky-500/20 pb-1.5">
+                    <span>THREAT LEVEL</span>
+                    <span class="text-sky-400 font-bold">OMEGA_RESTRICTED</span>
+                </div>
+            </div>
+            <button onclick="closeSystemStatus()" class="mt-5 w-full py-2 rounded-lg bg-sky-900/40 hover:bg-sky-700 border border-sky-400 text-sky-200 transition-all">
+                DISMISS_DIAGNOSTICS
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-sky-500/20 py-6 text-center text-xs text-gray-600 font-mono relative z-10 mt-8">
+        <p>404: REALITY NOT FOUND &copy; 2026 — SECURE CYBER MATRIX VAULT.</p>
+    </footer>
+
+    <!-- JavaScript Engine -->
+    <script>
+        // ================= CANVAS BACKGROUND: TEKNOLOGI CYBER MATRIX BERGERAK =================
+        const canvas = document.getElementById('techCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        // Kolom kode biner / matrix yang mengalir ke bawah
+        const fontSize = 14;
+        const columns = Math.floor(width / fontSize);
+        const drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.floor(Math.random() * height);
+        }
+
+        // Simbol/karakter data sci-fi
+        const chars = "0101010101ABCDEFXYZ<>/\\#@$%*+-~[X]MRI-SCAN_NEURAL_LINK";
+
+        function drawTechMatrixBackground() {
+            // Efek motion blur transparan
+            ctx.fillStyle = "rgba(2, 6, 23, 0.12)";
+            ctx.fillRect(0, 0, width, height);
+
+            ctx.fillStyle = "#38bdf8";
+            ctx.font = `${fontSize}px "Fira Code", monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+
+                // Kepala hujan data berwarna putih terang
+                ctx.fillStyle = "#e0f2fe";
+                ctx.fillText(text, x, y);
+
+                // Ekor hujan data berwarna biru siber
+                ctx.fillStyle = "#0284c7";
+                ctx.fillText(text, x, y - fontSize);
+
+                if (y > height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+
+            // Elemen HUD / Kotak Scan Medis Biometrik yang melayang perlahan
+            ctx.strokeStyle = "rgba(56, 189, 248, 0.15)";
+            ctx.lineWidth = 1;
+            
+            const time = Date.now() * 0.001;
+            for (let j = 0; j < 5; j++) {
+                let hx = (Math.sin(time + j) * 200) + (width * (j + 1) / 6);
+                let hy = (Math.cos(time * 0.7 + j) * 150) + (height * 0.5);
+                
+                ctx.strokeRect(hx - 40, hy - 40, 80, 80);
+                ctx.beginPath();
+                ctx.moveTo(hx - 50, hy); ctx.lineTo(hx - 40, hy);
+                ctx.moveTo(hx + 40, hy); ctx.lineTo(hx + 50, hy);
+                ctx.stroke();
+            }
+
+            requestAnimationFrame(drawTechMatrixBackground);
+        }
+
+        drawTechMatrixBackground();
+
+        // ================= DATABASE 100 ARSIP UNIK =================
+        const categories = {
+            locations: { label: "🌌 LOCATIONS", tag: "LOC" },
+            artifacts: { label: "🕰 ARTIFACTS", tag: "ART" },
+            entities: { label: "👤 ENTITIES", tag: "ENT" },
+            phenomena: { label: "✨ PHENOMENA", tag: "PHE" }
+        };
+
+        const realSites = [
+            { name: "Catacombs of Paris", country: "Prancis", coords: "48°50'11.0\"N 2°20'24.0\"E" },
+            { name: "Aokigahara Forest", country: "Jepang", coords: "35°28'12.0\"N 138°37'11.0\"E" },
+            { name: "Poveglia Island", country: "Italia", coords: "45°22'55.0\"N 12°19'50.0\"E" },
+            { name: "Bhangarh Fort", country: "India", coords: "27°05'35.0\"N 76°17'15.0\"E" },
+            { name: "Humberstone Salt Mine", country: "Chile", coords: "20°14'22.0\"S 69°47'50.0\"W" },
+            { name: "Trans-Allegheny Asylum", country: "Amerika Serikat", coords: "39°02'30.0\"N 80°28'30.0\"W" },
+            { name: "Waverly Hills Sanatorium", country: "Amerika Serikat", coords: "38°08'45.0\"N 85°52'10.0\"W" },
+            { name: "Edinburgh Vaults", country: "Skotlandia", coords: "55°56'53.0\"N 3°11'28.0\"W" },
+            { name: "Isla de las Muñecas", country: "Meksiko", coords: "19°16'15.0\"N 99°05'22.0\"W" },
+            { name: "Oradour-sur-Glane", country: "Prancis", coords: "45°55'58.0\"N 1°02'22.0\"E" },
+            { name: "Sedlec Ossuary", country: "Republik Ceko", coords: "49°57'43.0\"N 15°17'18.0\"E" },
+            { name: "Pripyat Exclusion Zone", country: "Ukraina", coords: "51°24'20.0\"N 30°03'25.0\"E" },
+            { name: "Hoia Baciu Forest", country: "Rumania", coords: "46°46'30.0\"N 23°31'15.0\"E" },
+            { name: "Chauchilla Cemetery", country: "Peru", coords: "14°59'30.0\"S 74°54'10.0\"W" },
+            { name: "Hashima Island", country: "Jepang", coords: "32°37'40.0\"N 129°44'18.0\"E" },
+            { name: "Port Arthur Penal Colony", country: "Australia", coords: "43°08'45.0\"S 147°51'00.0\"E" },
+            { name: "Lawang Sewu Sub-Basement", country: "Indonesia", coords: "6°59'02.0\"S 110°24'38.0\"E" },
+            { name: "Castle of Good Hope", country: "Afrika Selatan", coords: "33°55'33.0\"S 18°25'40.0\"E" },
+            { name: "Tower of London", country: "Inggris", coords: "51°30'29.0\"N 0°04'34.0\"W" },
+            { name: "Akershus Fortress", country: "Norwegia", coords: "59°54'25.0\"N 10°44'12.0\"E" }
+        ];
+
+        const openingHooks = [
+            "Rekaman kamera pengawas beresolusi rendah yang ditemukan di ruang arsip tua ini memperlihatkan kejanggalan yang sulit diterima akal sehat.",
+            "Catatan harian milik seorang arkeolog yang menghilang tanpa jejak pada musim dingin lalu menjadi satu-satunya petunjuk atas keberadaan anomali ini.",
+            "Laporan forensik dari tim investigasi independen mengungkap bahwa fenomena ini pertama kali disadari ketika seluruh jarum kompas di wilayah tersebut berputar tak terkendali.",
+            "Penduduk setempat telah lama menghindari lembah sunyi ini setelah matahari terbenam, meyakini bahwa kabut tebal di sana menyembunyikan sesuatu yang bukan berasal dari dunia ini.",
+            "Dalam transkrip wawancara rahasia dengan satu-satunya penyintas ekspedisi tahun 1998, terungkap detail mengerikan mengenai apa yang sebenarnya bersembunyi di balik reruntuhan.",
+            "Analisis spektrografi terhadap sampel tanah dari lokasi ini menunjukkan kandungan isotop logam berat yang tidak pernah tercatat dalam tabel periodik mana pun.",
+            "Peringatan karantina tingkat tinggi diberlakukan secara diam-diam setelah tiga tim penyelamat yang masuk ke sektor ini kembali dalam keadaan hilang ingatan total.",
+            "Sebuah kotak timah berkarat yang terkubur tiga meter di bawah fondasi bangunan tua menyimpan gulungan perkamen dengan peringatan tertulis menggunakan darah kering.",
+            "Sinyal radio berfrekuensi ultra-rendah terus dipancarkan dari titik koordinat ini setiap pukul 03.15 dini hari, membentuk pola kode morse yang berulang.",
+            "Dokumentasi fotografi pelat kaca dari akhir abad ke-19 secara tidak sengaja menangkap siluet sosok-sosok berjubah yang berdiri mematung di latar belakang."
+        ];
+
+        const middleIncidents = [
+            "Ketika tim peneliti mencoba mendekati pusat anomali menggunakan peralatan pemindai termal, layar monitor justru menampilkan puluhan siluet tubuh manusia yang berdiri berdesakan meski ruangan tersebut secara fisik kosong melompong. Suara gesekan kain berat terdengar jelas melalui mikrofon berdaya sensitivitas tinggi, seolah-olah kerumunan tak kasatmata sedang berjalan melintasi para peneliti.",
+            "Benda kuno yang ditemukan di dalam ruang bawah tanah tersebut memiliki permukaan sehitam jelaga yang menyerap seluruh cahaya senter. Setiap orang yang menatap permukaannya terlalu lama mengaku melihat bayangan dirinya sendiri berjalan menjauh di dalam pantulan gelap, disertai bisikan pelan yang memanggil nama masa kecil mereka.",
+            "Pada malam ketiga pengamatan, suhu udara turun drastis hingga membekukan embun di lensa kamera. Dari balik kabut pekat, muncul barisan figur tinggi berjubah gelap yang melangkah serempak tanpa meninggalkan jejak kaki di atas lumpur basah. Mereka berhenti tepat di batas garis pengaman sebelum menghilang seketika saat fajar menyingsing.",
+            "Dinding batu di lorong utama mengeluarkan cairan kental berwarna merah gelap yang berbau seperti karat besi dan ozon. Pemeriksaan laboratorium membuktikan bahwa cairan tersebut memiliki struktur genetik yang mirip dengan darah manusia, namun terus beregenerasi dan bergerak perlahan melawan arah gravitasi.",
+            "Alat perekam suara yang ditinggalkan di tengah ruangan menangkap percakapan dalam bahasa kuno yang telah punah ribuan tahun silam. Setelah diterjemahkan oleh ahli linguistik, rekaman tersebut berisi hitung mundur yang merujuk pada tanggal-tanggal terjadinya bencana besar di masa lampau.",
+            "Struktur arsitektur di dalam situs ini melanggar hukum geometri dasar; lorong yang tampak lurus dari luar ternyata melengkung kembali ke titik awal setelah berjalan selama sepuluh menit. Beberapa anggota tim melaporkan melihat sosok berkerudung berjalan di ujung lorong, namun jarak di antara mereka tidak pernah berkurang sedikit pun."
+        ];
+
+        const closingConclusions = [
+            "Hingga hari ini, akses menuju koordinat tersebut ditutup rapat dengan pagar kawat berduri dan dijaga oleh personel bersenjata tanpa tanda pengenal. Seluruh dokumentasi visual asli telah disita untuk mencegah kepanikan publik.",
+            "Para ahli menyimpulkan bahwa lokasi ini merupakan titik simpul di mana batas antara realitas fisik dan dimensi bayangan menipis. Siapa pun yang nekat melanggar batas larangan dilaporkan akan terus dihantui bayangan kerumunan di sudut pandang mereka.",
+            "Arsip ini disimpan sebagai pengingat agar tidak ada lagi ekspedisi sipil yang mencoba menggali sejarah terlarang di wilayah tersebut. Kegagalan mematuhi protokol isolasi dapat berakibat pada hilangnya kesadaran permanen.",
+            "Meskipun pemerintah setempat secara resmi menyatakan situs ini ditutup karena alasan keamanan struktur bangunan, laporan satelit terbaru menunjukkan adanya aktivitas pergerakan massa di dalam area terlarang setiap malam bulan mati.",
+            "Catatan akhir dari ketua tim ekspedisi hanya berisi satu kalimat singkat yang ditulis dengan tangan gemetar: 'Jangan pernah menoleh jika kau merasa sedang berjalan di tengah kerumunan saat sendirian.'"
+        ];
+
+        const subjectPrefixes = [
+            "The Cloaked Procession of",
+            "The Bleeding Reliquary at",
+            "The Shadow Congregation of",
+            "The Subterranean Echoes in",
+            "The Obsidian Monolith of",
+            "The Faceless Pilgrims at",
+            "The Cursed Archive of",
+            "The Midnight Vigil at",
+            "The Forgotten Catacomb of",
+            "The Crimson Veil over"
+        ];
+
+        const archiveData = [];
+        const catKeys = ["locations", "artifacts", "entities", "phenomena"];
+
+        for (let i = 1; i <= 100; i++) {
+            const site = realSites[(i * 3 + Math.floor(i / 5)) % realSites.length];
+            const prefix = subjectPrefixes[(i * 7) % subjectPrefixes.length];
+            const hook = openingHooks[(i * 11) % openingHooks.length];
+            const incident = middleIncidents[(i * 13 + Math.floor(i / 3)) % middleIncidents.length];
+            const conclusion = closingConclusions[(i * 17) % closingConclusions.length];
+            const catKey = catKeys[i % catKeys.length];
+
+            const uniqueTitle = `${prefix} ${site.name} — File #${3000 + i}`;
+            const narrativeText = `${hook}\n\n${incident}\n\n${conclusion}`;
+
+            archiveData.push({
+                id: 3000 + i,
+                title: uniqueTitle,
+                category: catKey,
+                categoryLabel: categories[catKey].label,
+                shortDesc: `${hook.substring(0, 115)}...`,
+                fullDesc: `Laporan investigasi klasifikasi tingkat tinggi mengenai fenomena anomali yang terpusat di ${site.name}, ${site.country}. ${hook}`,
+                fact: `Anomali elektromagnetik terdeteksi pada titik ${site.coords} dengan fluktuasi suhu mencapai -${(i % 15) + 4}°C secara tiba-tiba.`,
+                realLocName: site.name,
+                realCountry: site.country,
+                realCoords: site.coords,
+                threatLevel: i % 3 === 0 ? "CLASS_OMEGA" : (i % 2 === 0 ? "CLASS_RED" : "CLASS_BLACK"),
+                mapAscii: `  [SECTOR TARGET: ${site.name.toUpperCase()}]\n   .-------.  /\n  / ${site.country.toUpperCase()} \\/\n  |   [X]   | (Grid Ref: #${3000 + i})\n   '-------'`,
+                longNarrative: narrativeText
+            });
+        }
+
+        let currentPage = 1;
+        const itemsPerPage = 9;
+        let filteredData = [...archiveData];
+        let currentCategory = 'all';
+
+        function renderArchive() {
+            const grid = document.getElementById('archiveGrid');
+            grid.innerHTML = '';
+
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const pageItems = filteredData.slice(start, end);
+
+            if (pageItems.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-gray-500 font-mono">
+                        <p class="text-sm">[ERROR 404]: No matching archive found in database.</p>
+                    </div>
+                `;
+                updatePaginationControls(0);
+                return;
+            }
+
+            pageItems.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'tech-card rounded-xl p-5 flex flex-col justify-between cursor-pointer group relative overflow-hidden';
+                card.onclick = () => openModal(item);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-[10px] font-mono text-cyan-400 bg-sky-950/60 px-2.5 py-0.5 rounded-full border border-sky-500/30">
+                                ${item.categoryLabel}
+                            </span>
+                            <span class="text-xs font-mono text-gray-500 group-hover:text-cyan-400 transition-colors">REC-#${item.id}</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-1.5 font-orbitron group-hover:text-cyan-300 transition-colors leading-snug">${item.title}</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-4 font-light line-clamp-2">${item.shortDesc}</p>
+                    </div>
+                    <div>
+                        <div class="bg-black/80 border border-sky-500/20 rounded-lg p-2 mb-3 flex items-center justify-between text-[10px] font-mono text-cyan-400">
+                            <span class="flex items-center gap-1">📍 ${item.realCountry}</span>
+                            <span class="text-sky-400 font-bold">${item.threatLevel}</span>
+                        </div>
+                        <div class="pt-2 border-t border-sky-950/50 flex items-center justify-between text-xs font-mono text-gray-500 group-hover:text-gray-300">
+                            <span>Open Classified File</span>
+                            <span class="group-hover:translate-x-1 transition-transform text-cyan-400">→</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            updatePaginationControls(filteredData.length);
+        }
+
+        function updatePaginationControls(totalItems) {
+            const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+            document.getElementById('pageIndicator').innerText = `PAGE ${currentPage} / ${totalPages}`;
+            document.getElementById('prevBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').disabled = currentPage === totalPages || totalItems === 0;
+        }
+
+        function changePage(delta) {
+            currentPage += delta;
+            renderArchive();
+            window.scrollTo({ top: 200, behavior: 'smooth' });
+        }
+
+        function filterCategory(cat, btnElement) {
+            currentCategory = cat;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-sky-600', 'text-white', 'border-sky-400', 'shadow-lg');
+                btn.classList.add('bg-black/80', 'text-gray-400', 'border-sky-500/20');
+            });
+
+            btnElement.classList.remove('bg-black/80', 'text-gray-400', 'border-sky-500/20');
+            btnElement.classList.add('bg-sky-600', 'text-white', 'border-sky-400', 'shadow-lg');
+
+            applyFilterAndSearch();
+        }
+
+        document.getElementById('searchInput').addEventListener('input', applyFilterAndSearch);
+
+        function applyFilterAndSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            filteredData = archiveData.filter(item => {
+                const matchesCategory = currentCategory === 'all' || item.category === currentCategory;
+                const matchesSearch = item.title.toLowerCase().includes(query) || 
+                                      item.shortDesc.toLowerCase().includes(query) ||
+                                      item.realLocName.toLowerCase().includes(query) ||
+                                      item.realCountry.toLowerCase().includes(query) ||
+                                      item.longNarrative.toLowerCase().includes(query);
+                return matchesCategory && matchesSearch;
+            });
+            currentPage = 1;
+            renderArchive();
+        }
+
+        // ================= MULTI-TAB MODAL SYSTEM =================
+        function openModal(item) {
+            const modal = document.getElementById('detailModal');
+            
+            document.getElementById('modalHeader').innerHTML = `
+                <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-sky-950/60 border border-sky-500/30 text-cyan-400 font-mono text-xs mb-2">
+                    ${item.categoryLabel} — RECORD ID: #${item.id}
+                </div>
+                <h2 class="text-xl md:text-2xl font-bold text-white font-orbitron">${item.title}</h2>
+            `;
+
+            // Tab 1: Overview
+            document.getElementById('tabContent-overview').innerHTML = `
+                <p class="text-gray-300 text-xs md:text-sm leading-relaxed mb-4 font-light">${item.fullDesc}</p>
+                <div class="bg-sky-950/30 border border-sky-500/30 rounded-xl p-3.5 mb-4 font-mono">
+                    <h4 class="text-[11px] text-cyan-400 uppercase tracking-wider mb-1">ANOMALY_OBSERVATION</h4>
+                    <p class="text-xs text-sky-200/80 italic font-sans">"${item.fact}"</p>
+                </div>
+            `;
+
+            // Tab 2: Geolocation Data
+            document.getElementById('tabContent-location').innerHTML = `
+                <div class="space-y-3 font-mono text-xs">
+                    <div class="bg-black/80 p-3 rounded-xl border border-sky-900/40">
+                        <span class="text-gray-500 block text-[10px]">VERIFIED SITE NAME</span>
+                        <span class="text-cyan-300 font-bold text-sm">${item.realLocName}</span>
+                    </div>
+                    <div class="bg-black/80 p-3 rounded-xl border border-sky-900/40 flex justify-between">
+                        <div>
+                            <span class="text-gray-500 block text-[10px]">SOVEREIGN REGION</span>
+                            <span class="text-white">${item.realCountry}</span>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-gray-500 block text-[10px]">SECURITY THREAT</span>
+                            <span class="text-sky-400 font-bold">${item.threatLevel}</span>
+                        </div>
+                    </div>
+                    <div class="bg-black/80 p-3 rounded-xl border border-sky-900/40">
+                        <span class="text-gray-500 block text-[10px]">GPS COORDINATES VECTOR</span>
+                        <span class="text-cyan-400 font-mono">${item.realCoords}</span>
+                    </div>
+                    <div class="bg-black p-3 rounded-xl border border-sky-600/30 font-mono text-[11px] text-cyan-400">
+                        <span class="text-gray-500 block text-[10px] mb-1">TACTICAL MAP ASCII RENDER</span>
+                        <pre class="whitespace-pre text-sky-300/90">${item.mapAscii}</pre>
+                    </div>
+                </div>
+            `;
+
+            // Tab 3: Classified Narrative
+            document.getElementById('tabContent-narrative').innerHTML = `
+                <div class="bg-black/90 border border-sky-600/50 rounded-xl p-5 font-mono text-xs">
+                    <div class="flex justify-between items-center pb-2 mb-3 border-b border-sky-900/40 text-cyan-400">
+                        <span class="font-bold flex items-center gap-1.5 font-orbitron">
+                            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                            CLASSIFIED_CHRONICLE_LOG
+                        </span>
+                        <span class="text-[9px] text-gray-500">CLEARANCE: LEVEL_5</span>
+                    </div>
+                    <div class="text-gray-300/95 leading-relaxed font-sans text-xs md:text-sm space-y-4">
+                        ${item.longNarrative.split('\n\n').map(p => `<p>${p}</p>`).join('')}
+                    </div>
+                </div>
+            `;
+
+            switchTab('overview');
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.add('text-gray-400');
+            });
+            document.querySelectorAll('.tab-page').forEach(page => page.classList.add('hidden'));
+
+            const selectedBtn = document.getElementById(`tab-${tabName}`);
+            const selectedPage = document.getElementById(`tabContent-${tabName}`);
+
+            if (selectedBtn && selectedPage) {
+                selectedBtn.classList.add('active');
+                selectedBtn.classList.remove('text-gray-400');
+                selectedPage.classList.remove('hidden');
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('detailModal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        function toggleTerminal() {
+            const terminal = document.getElementById('terminalDrawer');
+            if (terminal.classList.contains('hidden')) {
+                terminal.classList.remove('hidden');
+                setTimeout(() => terminal.classList.remove('translate-y-full'), 10);
+            } else {
+                terminal.classList.add('translate-y-full');
+                setTimeout(() => terminal.classList.add('hidden'), 300);
+            }
+        }
+
+        function handleTerminalCommand(e) {
+            if (e.key === 'Enter') {
+                const input = e.target.value.trim().toLowerCase();
+                const output = document.getElementById('terminalOutput');
+                let response = `> Unknown command: '${input}'. Type 'help' for parameters.`;
+                
+                if (input === 'help') {
+                    response = `> Available commands: 'scan', 'count', 'random', 'clear', 'status'`;
+                } else if (input === 'count') {
+                    response = `> Total unique tech records mounted: ${archiveData.length}`;
+                } else if (input === 'scan') {
+                    response = `> [SCANNING] Cyber matrix canvas active. Binary stream in motion.`;
+                } else if (input === 'random') {
+                    const randomItem = archiveData[Math.floor(Math.random() * archiveData.length)];
+                    openModal(randomItem);
+                    response = `> Opening secure archive REC-#${randomItem.id}...`;
+                } else if (input === 'clear') {
+                    output.innerHTML = '';
+                    e.target.value = '';
+                    return;
+                } else if (input === 'status') {
+                    openSystemStatus();
+                    response = `> Opening System Diagnostics panel...`;
+                }
+
+                output.innerHTML += `<p class="text-cyan-300">> ${input}</p><p>${response}</p>`;
+                output.scrollTop = output.scrollHeight;
+                e.target.value = '';
+            }
+        }
+
+        function openSystemStatus() {
+            document.getElementById('statusModal').classList.remove('hidden');
+        }
+
+        function closeSystemStatus() {
+            document.getElementById('statusModal').classList.add('hidden');
+        }
+
+        function exportData() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(archiveData, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", "cyber_matrix_vault_100_records.json");
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('detailModal');
+            if (event.target === modal) closeModal();
+        }
+
+        renderArchive();
+    </script>
+</body>
+</html>
